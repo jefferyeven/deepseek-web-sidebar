@@ -28,11 +28,11 @@ window.__ModuleLoader__.load({
         const t = ctx.locale.bind(namespace);
         ctx.effect(() => ctx.locale.register(namespace, {
           zh: {
-            label: 'DeepSeek 网页版',
+            label: 'DeepSeek',
             open: '在侧边栏打开 DeepSeek 网页版',
           },
           en: {
-            label: 'DeepSeek Web',
+            label: 'DeepSeek',
             open: 'Open DeepSeek Web in the sidebar',
           },
         }), 'deepseek-web-sidebar.copy');
@@ -58,9 +58,9 @@ window.__ModuleLoader__.load({
               style: {
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 6,
-                height: 30,
-                padding: '0 10px',
+                gap: 4,
+                height: 28,
+                padding: '0 8px',
                 border: '1px solid color-mix(in srgb, var(--dsw-alias-state-business-primary) 28%, transparent)',
                 borderRadius: 15,
                 color: 'var(--dsw-alias-state-business-primary)',
