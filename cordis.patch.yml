@@ -1,0 +1,3 @@
+- insert:
+    - id: deepseek-web-sidebar
+      name: '@local/deepseek-web-sidebar'
