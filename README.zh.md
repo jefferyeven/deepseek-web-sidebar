@@ -4,6 +4,7 @@
 
 ## 行为
 
+- 按 DSH 当前语言显示按钮：中文为“DeepSeek 网页版”，英文为“DeepSeek Web”。
 - 使用 DSH Desktop 已有的 Browser/webview 容器；不新增 API 请求。
 - 使用 DeepSeek 网页账号登录和网页额度，不消耗 DSH 配置的 API token。
 - 插件不读取、转发或保存网页聊天内容。

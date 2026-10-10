@@ -22,8 +22,21 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      inject: ['slots', 'sidebarRight'],
+      inject: ['slots', 'sidebarRight', 'locale'],
       apply(ctx) {
+        const namespace = 'deepseekWebSidebar';
+        const t = ctx.locale.bind(namespace);
+        ctx.effect(() => ctx.locale.register(namespace, {
+          zh: {
+            label: 'DeepSeek 网页版',
+            open: '在侧边栏打开 DeepSeek 网页版',
+          },
+          en: {
+            label: 'DeepSeek Web',
+            open: 'Open DeepSeek Web in the sidebar',
+          },
+        }), 'deepseek-web-sidebar.copy');
+
         ctx.slots.inject('conversation.composer.dock', () => {
           const openDeepSeek = () => {
             try {
@@ -39,8 +52,8 @@ window.__ModuleLoader__.load({
           function DeepSeekWebButton() {
             return h('button', {
               type: 'button',
-              title: '在侧边栏打开 DeepSeek 网页版',
-              'aria-label': '在侧边栏打开 DeepSeek 网页版',
+              title: t('open'),
+              'aria-label': t('open'),
               onClick: openDeepSeek,
               style: {
                 display: 'inline-flex',
@@ -56,7 +69,7 @@ window.__ModuleLoader__.load({
                 font: 'inherit',
                 whiteSpace: 'nowrap',
               },
-            }, h(WhaleMark), h('span', null, 'DeepSeek Web'));
+            }, h(WhaleMark), h('span', null, t('label')));
           }
 
           return ctx.slots.register({
