@@ -1,11 +1,11 @@
 window.__ModuleLoader__.load({
-  id: '@local/deepseek-web-sidebar',
+  id: '@local/qianwen-web-sidebar',
   factory(require) {
     const React = require('react');
     const h = React.createElement;
-    const DEEPSEEK_URL = 'https://chat.deepseek.com';
+    const QIANWEN_URL = 'https://www.qianwen.com/';
 
-    function WhaleMark() {
+    function QianwenMark() {
       return h('svg', {
         viewBox: '0 0 24 24',
         width: 16,
@@ -16,7 +16,7 @@ window.__ModuleLoader__.load({
       },
         h('path', {
           fill: 'currentColor',
-          d: 'M20.6 7.2c-.7-1.8-2.4-3-4.4-3.1.1.5.1 1 0 1.5-.8-1.2-2.1-2-3.6-2.2.2.6.2 1.2.1 1.8-1.2-1.1-3-1.6-4.7-1.1.4.4.7.9.9 1.4C5.5 5.7 3.1 8.1 3.1 11c0 3.7 3.1 6.2 7.2 6.2 2.2 0 4-.7 5.4-2 .7-.7 1.4-1.1 2.3-1.1.8 0 1.6.3 2.1.8.3-.7.3-1.5 0-2.2.8-.7 1.1-1.7 1.1-2.7 0-.9-.3-1.9-.6-2.8ZM8 12.2c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9Zm4.7 2c-1.5 0-2.8-.7-3.5-1.8.8.4 1.7.6 2.6.6 1.2 0 2.2-.3 3.1-.9-.4 1.2-1.2 2.1-2.2 2.1Z',
+          d: 'M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 1.8c1.1 0 2.2.9 3 2.3.3.5.5 1.1.7 1.7H10.3c.2-.6.4-1.2.7-1.7.8-1.4 1.9-2.3 3-2.3ZM4.4 10.1h3.2c-.1.6-.1 1.2-.1 1.9s0 1.3.1 1.9H4.4a7.8 7.8 0 0 1 0-3.8Zm1 5.6h2.5c.2.8.5 1.6.9 2.2a7.8 7.8 0 0 1-3.4-2.2Zm2.5-7.4H5.4a7.8 7.8 0 0 1 3.4-2.2c-.4.6-.7 1.4-.9 2.2Zm4.1 11.3c-1.1 0-2.2-.9-3-2.3-.3-.5-.5-1.1-.7-1.7h7.4c-.2.6-.4 1.2-.7 1.7-.8 1.4-1.9 2.3-3 2.3Zm4.1-5.7h-8.2c-.1-.6-.1-1.2-.1-1.9s0-1.3.1-1.9h8.2c.1.6.1 1.2.1 1.9s0 1.3-.1 1.9Zm-.1 4c.4-.6.7-1.4.9-2.2h2.5a7.8 7.8 0 0 1-3.4 2.2Zm1.2-4c.1-.6.1-1.2.1-1.9s0-1.3-.1-1.9h3.2a7.8 7.8 0 0 1 0 3.8h-3.2Zm-.3-5.6c-.2-.8-.5-1.6-.9-2.2a7.8 7.8 0 0 1 3.4 2.2H17Z',
         }),
       );
     }
@@ -24,37 +24,37 @@ window.__ModuleLoader__.load({
     return {
       inject: ['slots', 'sidebarRight', 'locale'],
       apply(ctx) {
-        const namespace = 'deepseekWebSidebar';
+        const namespace = 'qianwenWebSidebar';
         const t = ctx.locale.bind(namespace);
         ctx.effect(() => ctx.locale.register(namespace, {
           zh: {
-            label: 'DeepSeek',
-            open: '在侧边栏打开 DeepSeek 网页版',
+            label: '千问',
+            open: '在侧边栏打开千问',
           },
           en: {
-            label: 'DeepSeek',
-            open: 'Open DeepSeek Web in the sidebar',
+            label: 'Qianwen Web',
+            open: 'Open Qianwen Web in the sidebar',
           },
-        }), 'deepseek-web-sidebar.copy');
+        }), 'qianwen-web-sidebar.copy');
 
         ctx.slots.inject('conversation.composer.dock', () => {
-          const openDeepSeek = () => {
+          const openQianwen = () => {
             try {
               ctx.sidebarRight.openTab('browser', {
-                params: { url: DEEPSEEK_URL },
+                params: { url: QIANWEN_URL },
                 revealIfOpened: true,
               });
             } catch (error) {
-              console.error('[deepseek-web-sidebar] Could not open Browser tab', error);
+              console.error('[qianwen-web-sidebar] Could not open Browser tab', error);
             }
           };
 
-          function DeepSeekWebButton() {
+          function QianwenWebButton() {
             return h('button', {
               type: 'button',
               title: t('open'),
               'aria-label': t('open'),
-              onClick: openDeepSeek,
+              onClick: openQianwen,
               style: {
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -69,14 +69,14 @@ window.__ModuleLoader__.load({
                 font: 'inherit',
                 whiteSpace: 'nowrap',
               },
-            }, h(WhaleMark), h('span', null, t('label')));
+            }, h(QianwenMark), h('span', null, t('label')));
           }
 
           return ctx.slots.register({
             name: 'conversation.composer.dock',
-            id: 'deepseek-web-sidebar.launcher',
+            id: 'qianwen-web-sidebar.launcher',
             order: 15,
-          }, DeepSeekWebButton);
+          }, QianwenWebButton);
         });
       },
     };

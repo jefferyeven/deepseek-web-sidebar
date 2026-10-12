@@ -1,8 +1,8 @@
 {
-  "name": "@local/deepseek-web-sidebar",
+  "name": "@local/qianwen-web-sidebar",
   "version": "1.0.1",
   "private": true,
-  "description": "One-click DeepSeek Web sidebar launcher for DSH Desktop",
+  "description": "One-click Qianwen Web sidebar launcher for DSH Desktop",
   "type": "module",
   "exports": {
     ".": "./index.js",
